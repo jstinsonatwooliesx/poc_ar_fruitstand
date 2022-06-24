@@ -45,7 +45,7 @@
             var shelf;
             try {
             const loader = new THREE.GLTFLoader(); 
-            loader.load( 'scene.gltf', 
+            loader.load( './scene.gltf', 
                 function ( gltf ) { 
                     shelf = gltf.scene;
                     shelf.position.y = .8;
@@ -78,6 +78,10 @@
                 //fpcontrols.update(clock.getDelta());
 				renderer.render( scene, camera );
 			};
+
+            renderer.setAnimationLoop( function () {
+                renderer.render( scene, camera );
+            });
 
 			animate();
 		</script>
