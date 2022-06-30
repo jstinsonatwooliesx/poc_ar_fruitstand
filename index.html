@@ -19,10 +19,10 @@
 			const scene = new THREE.Scene();
 			const camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 0.1, 1000 );
 
-			const renderer = new THREE.WebGLRenderer();
+			const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 			renderer.setSize( window.innerWidth, window.innerHeight );
-            renderer.xr.enabled = true;
-            document.body.appendChild( VRButton.createButton( renderer ) );
+            		renderer.xr.enabled = true;
+            		document.body.appendChild( VRButton.createButton( renderer ) );
 			document.body.appendChild( renderer.domElement );
             
             const controls = new THREE.OrbitControls( camera, renderer.domElement );
