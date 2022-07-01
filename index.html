@@ -14,15 +14,15 @@
         <script src="js/three/examples/js/controls/OrbitControls.js"></script>
         <script src="js/three/examples/js/controls/FirstPersonControls.js"></script>
 		<script type="module" >
-            import { VRButton } from './js/three/examples/jsm/webxr/VRButton.js';
+            import { ARButton } from './js/three/examples/jsm/webxr/ARButton.js';
 
 			const scene = new THREE.Scene();
-			const camera = new THREE.PerspectiveCamera( 25, window.innerWidth / window.innerHeight, 0.1, 1000 );
+			const camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 1000 );
 
 			const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 			renderer.setSize( window.innerWidth, window.innerHeight );
-            		renderer.xr.enabled = true;
-            		document.body.appendChild( VRButton.createButton( renderer ) );
+            renderer.xr.enabled = true;
+            document.body.appendChild( ARButton.createButton( renderer ) );
 			document.body.appendChild( renderer.domElement );
             
             const controls = new THREE.OrbitControls( camera, renderer.domElement );
@@ -50,7 +50,7 @@
                     shelf = gltf.scene;
                     shelf.position.x = -0.6;
                     shelf.position.y = .2;
-                    shelf.position.z = -3;
+                    shelf.position.z = -2;
                     scene.add( shelf ); 
                 }, 
                 undefined, 
@@ -80,12 +80,11 @@
                 //fpcontrols.update(clock.getDelta());
 				renderer.render( scene, camera );
 			};
+            animate();
 
             renderer.setAnimationLoop( function () {
                 renderer.render( scene, camera );
             });
-
-			animate();
 		</script>
 	</body>
 </html>
