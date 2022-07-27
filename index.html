@@ -48,10 +48,15 @@
             loader.load( './scene.gltf', 
                 function ( gltf ) { 
                     shelf = gltf.scene;
-                    shelf.position.x = -0.6;
-                    shelf.position.y = .2;
-                    shelf.position.z = -2;
+                    shelf.position.x = 0;
+                    shelf.position.y = 0;
+                    shelf.position.z = 0;
                     scene.add( shelf ); 
+
+                    renderer.xr.addEventListener( 'sessionstart', () => {
+                        shelf.position.z = -2;
+                        shelf.position.y = -0.2;
+                    } );
                 }, 
                 undefined, 
                 function ( error ) { 
